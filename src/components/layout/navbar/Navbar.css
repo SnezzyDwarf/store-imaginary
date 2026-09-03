@@ -1,0 +1,119 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: rgba(139, 94, 52, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.9px);
+  -webkit-backdrop-filter: blur(13.9px);
+}
+
+/* ===== LOGO ===== */
+.navbar__logo {
+  position: absolute;
+  top: 50%;
+  left: var(--space-md);
+  transform: translateY(-50%);
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* ===== DESKTOP NAV ===== */
+.navbar__desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+/* ===== LINKS ===== */
+.navbar__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navbar__link {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+.navbar__link:hover {
+  color: #1f1f1f;
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: all 0.4s ease-in;
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+.navbar__link--active {
+  color: var(--color-secondary);
+}
+
+/* ===== ACTIONS (botões) ===== */
+.navbar__actions {
+  position: absolute;
+  top: 50%;
+  right: var(--space-md);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  z-index: 1;
+}
+
+/* ===== MOBILE NAV ===== */
+.navbar__mobile {
+  display: none;
+}
+
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-tertiary);
+  border-radius: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar__desktop {
+    display: none;
+  }
+
+  .navbar__mobile {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--space-md);
+  }
+}

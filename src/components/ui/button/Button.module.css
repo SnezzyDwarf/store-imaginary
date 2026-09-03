@@ -1,0 +1,20 @@
+.button {
+  border: none;
+  border-radius: 8px;
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary {
+  background-color: transparent;
+  color: var(--color-tertiary);
+  transition: all 0.4s ease-in;
+  display: flex;
+  align-items: center;
+}
+
+.primary:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
