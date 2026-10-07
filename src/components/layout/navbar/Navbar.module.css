@@ -1,0 +1,332 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  /* em fluxo normal: fica no inicio da pagina e acompanha o scroll */
+  position: relative;
+  width: min(90%, 1200px);
+  margin-inline: auto;
+  padding: 18px var(--space-md);
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* ===== INÍCIO (marca + hamburger) ===== */
+.start {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* ===== LOGO / BRAND ===== */
+.brand {
+  letter-spacing: 0.2em;
+  flex-shrink: 0;
+}
+
+/* ===== DESKTOP NAV ===== */
+.desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex: 1;
+  padding: 0;
+}
+
+/* ===== LINKS ===== */
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  flex: 1;
+}
+
+.link {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+.link:hover {
+  color: var(--accent-hover);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-hover);
+  transition: all 0.4s ease-in;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.active {
+  color: var(--accent-hover);
+}
+
+.active::after {
+  width: 100%;
+}
+
+/* ===== ACTIONS (cart + contador) ===== */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.cartButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--text-primary);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.cartButton:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.cartButton:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* contador de artigos */
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background-color: var(--accent);
+  color: var(--text-light);
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  animation: badgePop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.badgeEmpty {
+  background-color: var(--border);
+  color: var(--text-secondary);
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== MOBILE NAV ===== */
+.mobilePanel {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition:
+      transform 0.35s ease,
+      opacity 0.25s ease;
+  }
+
+  /* hamburger vira X */
+  .hamburgerOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburgerOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* painel deslizante abaixo da navbar */
+  .mobilePanel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 24px 48px -24px rgba(43, 37, 32, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobilePanel.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileLink {
+    position: relative;
+    padding: var(--space-sm) 0;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition:
+      color 0.3s ease,
+      padding-left 0.3s ease;
+  }
+
+  .mobileLink:hover {
+    color: var(--accent-hover);
+    padding-left: 6px;
+  }
+
+  .mobileLink::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-hover);
+    transition: width 0.4s ease-in;
+  }
+
+  .mobileLink.active {
+    color: var(--accent-hover);
+  }
+
+  .mobileLink.active::after {
+    width: 100%;
+  }
+
+  .mobileCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-top: var(--space-sm);
+    margin-top: var(--space-xs);
+    border-top: 1px solid var(--border-light);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+
+  .mobileCart:hover {
+    color: var(--accent-hover);
+  }
+
+  .mobileCartCount {
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--text-light);
+    font-size: 0.65rem;
+    line-height: 1;
+  }
+
+  .mobileCartCount.countEmpty {
+    background-color: var(--border);
+    color: var(--text-secondary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    animation: none;
+  }
+}

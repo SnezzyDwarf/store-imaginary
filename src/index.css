@@ -1,13 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Literata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@400;500;600&family=Space+Mono:wght@400&display=swap");
 
 :root {
   /*====== COLORS =======*/
-  --color-primary: #c5a059; /* BASE */
-  --color-secondary: #8b5e34; /* SUPPORT */
-  --color-tertiary: #1a1a1a; /* CTA */
-  --color-border: #313b4a;
-  --color-text: #474747; /* TEXT */
-  --color-light: #d4e4f6; /* DETAILS */
+  /* Backgrounds */
+  --bg-main: #eadbc4;
+  --bg-card: #f5ede1;
+
+  /* Text */
+  --text-primary: #2b2520;
+  --text-secondary: #6b5d52;
+  --text-muted: #8b7b6d;
+  --text-light: #f5ede1;
+
+  /* Borders */
+  --border: #c8b79f;
+  --border-light: #d9cbb6;
+
+  /* Accent */
+  --accent: #a65d45;
+  --accent-hover: #874835;
+
+  /* Secondary accent */
+  --gold: #b58a55;
 
   /*===text====*/
   --fs-h1: clamp(2rem, 5vw, 3.2rem);
@@ -17,9 +31,9 @@
   --fs-body: clamp(0.95rem, 1vw + 0.25rem, 1.15rem);
 
   /*======Font-family=====*/
-  --font-heading: "EB Garamond", serif;
-  --font-body: "Literata", serif;
-  --font-ui: "Work Sans", sans-serif;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
+  --font-ui: "DM Mono", monospace;
 
   /*===== Espaçamentos==== */
   --space-xs: 0.25rem;
@@ -58,8 +72,8 @@ body {
   font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  color: var(--color-text);
-  background-color: #f9f6f0;
+  color: var(--text-primary);
+  background: url("assets/images/backgroundLight.png");
   text-rendering: optimizeLegibility;
 }
 

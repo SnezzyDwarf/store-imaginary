@@ -1,0 +1,322 @@
+.about {
+  width: 100%;
+  height: auto;
+  margin-top: clamp(6rem, 12vh, 9rem);
+}
+
+.content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg) 5rem;
+}
+
+.text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 34rem;
+  padding-left: 1.75rem;
+}
+
+/* linha vertical a acompanhar o texto (lado esquerdo) */
+.text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(166, 93, 69, 0.9) 0%,
+    rgba(166, 93, 69, 0.28) 100%
+  );
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.label::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.title {
+  margin-top: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #2b2520 20%, #a86144 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 1.35rem;
+  background: linear-gradient(
+    90deg,
+    rgba(166, 93, 69, 0.9) 0%,
+    rgba(166, 93, 69, 0) 75%
+  );
+}
+
+.lead {
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1vw + 0.85rem, 1.35rem);
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+/* capitular editorial */
+.lead::first-letter {
+  float: left;
+  padding-right: 0.2rem;
+  font-size: 2.5em;
+  font-style: normal;
+  line-height: 0.82;
+  color: var(--accent);
+}
+
+.body {
+  margin-top: 1.1rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 0.2vw + 0.9rem, 1.05rem);
+  line-height: 1.85;
+  color: rgba(43, 37, 32, 0.78);
+  text-wrap: pretty;
+}
+
+.brand {
+  color: var(--text-primary);
+  font-weight: bolder;
+  letter-spacing: 0.06em;
+}
+
+.highlight {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.note {
+  margin-top: 1.75rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.note strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: min(100%, 34rem);
+  padding: var(--space-lg);
+  background-color: var(--bg-main);
+  border: 3.5px solid var(--text-primary);
+  border-radius: 0.5rem;
+  outline: 3px dashed var(--text-primary);
+  outline-offset: 12px;
+  box-shadow: 0 0 0 12px var(--bg-card);
+}
+
+.boxTitle {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.statHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--text-primary);
+}
+
+.statHeader h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.statHeader span {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--text-muted);
+}
+
+.statBody {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.statValue {
+  flex: 0 0 38%;
+  min-width: max-content;
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.statBody p {
+  flex: 1;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.container {
+  width: 100%;
+
+  max-width: 75rem;
+
+  margin-inline: auto;
+
+  /* fallback para browsers sem suporte a dvh */
+
+  height: 80vh;
+
+  height: 80dvh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  position: relative;
+
+  gap: clamp(1rem, 3vh, 2rem);
+}
+
+.container h1 {
+  position: absolute;
+
+  /* fluido: escala com o ecra em vez de overflow no telemovel */
+
+  font-size: clamp(4rem, 20vw, 22rem);
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: -2;
+
+  background: linear-gradient(135deg, #2b2520 20%, #a86144 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+
+  line-height: 1;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    gap: clamp(2.5rem, 6vh, 3.5rem);
+  }
+
+  /* empilhado: a linha vertical lateral deixa de fazer sentido */
+  .text {
+    padding-left: 0;
+  }
+
+  .text::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    margin-top: clamp(3rem, 8vh, 5rem);
+  }
+
+  .content {
+    padding: var(--space-md) var(--space-md) var(--space-lg);
+    gap: var(--space-lg);
+  }
+
+  /* moldura decorativa mais justa para ecras pequenos */
+  .box {
+    outline-offset: 8px;
+    box-shadow: 0 0 0 8px var(--bg-card);
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    padding: var(--space-md);
+  }
+
+  .statValue {
+    flex-basis: 32%;
+    font-size: 1.75rem;
+  }
+}

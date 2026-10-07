@@ -1,9 +1,17 @@
-import Home from "./pages/Home";
+import AppRoutes from "./routes/AppRoutes";
+
+import { ReactLenis } from "lenis/react";
 
 export default function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.075,
+        smoothWheel: true,
+      }}
+    >
+      <AppRoutes />
+    </ReactLenis>
   );
 }

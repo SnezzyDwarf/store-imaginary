@@ -1,0 +1,590 @@
+/* ==== Checkout — painel único, estética maison ==== */
+
+.checkout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 5rem);
+  padding: clamp(2rem, 6vh, 4rem) var(--space-md);
+}
+
+.panel {
+  position: relative;
+  width: min(66rem, 100%);
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0) 45%
+    ),
+    var(--bg-card);
+  border: 1px solid var(--border-light);
+  box-shadow:
+    0 30px 60px -20px rgba(43, 37, 32, 0.45),
+    0 70px 140px -60px rgba(43, 37, 32, 0.5);
+  animation: panelIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+/* moldura dourada interior */
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: clamp(0.5rem, 1.1vw, 0.85rem);
+  z-index: 2;
+  border: 1px solid rgba(181, 138, 85, 0.4);
+  pointer-events: none;
+}
+
+/* assinatura da maison em outline */
+.panel::after {
+  content: "Aelwen";
+  position: absolute;
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  bottom: clamp(0.5rem, 1.2vw, 0.9rem);
+  z-index: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(181, 138, 85, 0.35);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ==== Header ==== */
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.headerRule {
+  width: 5rem;
+  height: 1px;
+  margin-top: var(--space-xs);
+  background: linear-gradient(90deg, var(--gold), rgba(181, 138, 85, 0));
+}
+
+/* ==== Grid: esquerda informação | linha dourada | direita valores ==== */
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.infoSection {
+  padding-right: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.orderSection {
+  display: flex;
+  flex-direction: column;
+  padding-left: clamp(1.5rem, 3.5vw, 3rem);
+  border-left: 1px solid rgba(181, 138, 85, 0.45);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sectionIndex {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.sectionHead h3 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+/* ==== Formulário ==== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.nameRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.formGroup label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.8rem var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(181, 138, 85, 0.12);
+}
+
+.formGroup input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ==== Pagamento ==== */
+.paymentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding: 0;
+  border: none;
+}
+
+.paymentGroup legend {
+  padding: 0;
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.paymentOptions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.radioOption:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.radioOption:has(input:checked) {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 0 0 1px rgba(181, 138, 85, 0.35);
+}
+
+.radioOption input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.radioOption input[type="radio"]:checked {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.radioOption input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radioOption span {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==== Campos extra (cartão / login) ==== */
+.additionalFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.altButton {
+  width: 100%;
+  padding: 0.8rem var(--space-md);
+  border: 1px solid var(--text-primary);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+.altButton:hover {
+  background-color: var(--text-primary);
+  color: var(--text-light);
+}
+
+/* ==== Right: Order — tudo junto ==== */
+.cartList {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dashed var(--border-light);
+  transition: background-color 0.25s ease;
+}
+
+.cartItem:first-child {
+  padding-top: 0;
+}
+
+.cartItem img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+  background: #fff;
+  box-shadow: 0 6px 14px -8px rgba(43, 37, 32, 0.45);
+}
+
+.cartItemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cartItemInfo h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.cartItemPrice {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ==== Botão remover — ghost pill ==== */
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.removeIcon {
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform 0.45s ease;
+}
+
+.removeButton:hover {
+  color: var(--text-light);
+  border-color: var(--accent);
+  background-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.removeButton:hover .removeIcon {
+  transform: translateY(-1px) rotate(90deg);
+}
+
+.removeButton:active {
+  transform: translateY(0);
+}
+
+.removeButton:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.emptyCart {
+  padding: var(--space-lg) var(--space-md);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ==== Resumo (colado ao fundo da coluna) ==== */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding-top: var(--space-lg);
+}
+
+.totalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
+}
+
+.totalRow .label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.totalRow .value {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.totalRow.total {
+  margin-top: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(181, 138, 85, 0.45);
+}
+
+.totalRow.total .label {
+  color: var(--text-primary);
+}
+
+.totalRow.total .value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ==== Botão — linguagem do site (inverte + seta) ==== */
+.purchaseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--text-primary);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.5s ease-in,
+    background-color 0.5s ease-in,
+    color 0.5s ease-in;
+}
+
+.purchaseButton::after {
+  content: "→";
+  transition: transform 0.5s ease-in;
+}
+
+.purchaseButton:hover {
+  transform: translateY(-2px);
+  background-color: var(--text-primary);
+  color: var(--text-light);
+}
+
+.purchaseButton:hover::after {
+  transform: translateX(5px);
+}
+
+.secureNote {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ==== Animação de entrada ==== */
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}
+
+/* ==== Responsivo ==== */
+@media (max-width: 900px) {
+  .checkout {
+    min-height: auto;
+    padding-block: clamp(1.5rem, 5vh, 3rem);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  .infoSection {
+    padding-right: 0;
+  }
+
+  .orderSection {
+    padding-top: clamp(1.5rem, 4vh, 2.5rem);
+    padding-left: 0;
+    border-top: 1px solid rgba(181, 138, 85, 0.45);
+    border-left: none;
+  }
+
+  .panel::after {
+    display: none;
+  }
+
+  .paymentOptions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .nameRow {
+    grid-template-columns: 1fr;
+  }
+
+  .cartItem {
+    gap: var(--space-sm);
+  }
+
+  .cartItem img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .removeButton {
+    padding: 0.35rem 0.6rem;
+    letter-spacing: 0.12em;
+  }
+}
+
